@@ -484,8 +484,9 @@ body.assist #nav button[data-tab="stats"]{display:none}
       <div class="vex">
         <button data-vex="palla persa centrocampo 10">palla persa centrocampo 10</button>
         <button data-vex="palla recuperata difesa 4">palla recuperata difesa 4</button>
-        <button data-vex="duello vinto attacco 9">duello vinto attacco 9</button>
-        <button data-vex="duello perso centrocampo 8">duello perso centrocampo 8</button>
+        <button data-vex="contrasto vinto attacco 9">contrasto vinto attacco 9</button>
+        <button data-vex="contrasto perso centrocampo 8">contrasto perso centrocampo 8</button>
+        <button data-vex="vinto attacco 9">vinto attacco 9 (= contrasto vinto)</button>
         <button data-vex="fallo fatto difesa 5">fallo fatto difesa 5</button>
         <button data-vex="fallo subito attacco 7">fallo subito attacco 7</button>
         <button data-vex="angolo nostro">angolo nostro</button>
@@ -496,7 +497,7 @@ body.assist #nav button[data-tab="stats"]{display:none}
         <button data-vex="autogol loro">autogol loro</button>
         <button data-vex="annulla">annulla</button>
       </div>
-      <p class="hint" style="margin:4px 0">Tocca un esempio per metterlo nel campo. Senza numero registro la squadra (perse, recuperi, duelli); se manca la zona o il lato te lo chiedo. Si possono unire più eventi con «e». <b>Tiri, gol e parate restano sulla mappa.</b></p>
+      <p class="hint" style="margin:4px 0">Tocca un esempio per metterlo nel campo. Senza numero registro la squadra (perse, recuperi, contrasti); se manca la zona o il lato te lo chiedo. Si possono unire più eventi con «e». <b>Tiri, gol e parate restano sulla mappa.</b></p>
     </details>
     <label class="vtts"><input type="checkbox" id="voceTts"> Leggi a voce l'evento registrato</label>
   </div>
@@ -520,7 +521,7 @@ body.assist #nav button[data-tab="stats"]{display:none}
       <button class="btn noi" data-fallo="S" data-zona="DIF">Dif</button>
       <button class="btn noi" data-fallo="S" data-zona="AREA">Area</button>
     </div>
-    <div class="rowlab">Duello vinto</div>
+    <div class="rowlab">Contrasto vinto</div>
     <div class="grid g4">
       <button class="btn noi" data-duello="V" data-zona="ATT">Att</button>
       <button class="btn noi" data-duello="V" data-zona="CEN">Cen</button>
@@ -544,7 +545,7 @@ body.assist #nav button[data-tab="stats"]{display:none}
       <button class="btn loro" data-fallo="F" data-zona="DIF">Dif</button>
       <button class="btn loro" data-fallo="F" data-zona="AREA">Area</button>
     </div>
-    <div class="rowlab">Duello perso</div>
+    <div class="rowlab">Contrasto perso</div>
     <div class="grid g4">
       <button class="btn loro" data-duello="P" data-zona="ATT">Att</button>
       <button class="btn loro" data-duello="P" data-zona="CEN">Cen</button>
@@ -622,7 +623,7 @@ body.assist #nav button[data-tab="stats"]{display:none}
     <p class="hint">Arancio i nostri tiri, grigio quelli avversari. Arancio scuro i nostri gol, nero i gol subiti. Il cerchio cresce con l'xG.</p>
   </div>
   <div class="card" id="cardContrasti">
-    <h2><span class="card-ic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABiElEQVR4nO3XS04DQQyE4Qax4GiIAyOOxg5WlqxoFhPGj3LP/62jzLSry1HWAgAAAAAAAAAAAAAAAAAAAIBb+/58/+1+ByX/ncdbxEM/vn5ernzPZFcv4qvCS0wVce5LDfDu1IbICxcWgNk5iIymh6ygI7utpazzhDfA26EN2RcpNQAzMYiqBqetoCNT1lLle5Y0wFNuQ8cFKQ/AKAXR2czSFXSkey11P7+tAV5HG7oHbyQCMBVBqAzetK+gI1lDUhv+WmIN8CLboDh4IxuAuRKE8uCN5Ao68uwwJwx/rQEN8M60YcrgzagAzqwh+8yUIMasoGd/AxT+YZ8h34Arg5zQBtkAIm+wchCSKyhrfSiuJakGVAxIrQ0SAXTcTJUg2ldQ91rofn5bA7oP7nW2oTwApcE/6giidAUpD9+rfM+SBkwZvFfVhtQAJg7+UXYQaStoh+F7WecJb8Bug/cy2hAWwM6DfxQZRMgKutPwvdZzd/+FV8M8AAAAAAAAAAAAAAAAAAAAgGZ/byzCogYnF6kAAAAASUVORK5CYII=" alt=""></span>Duelli e palle recuperate</h2>
+    <h2><span class="card-ic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABiElEQVR4nO3XS04DQQyE4Qax4GiIAyOOxg5WlqxoFhPGj3LP/62jzLSry1HWAgAAAAAAAAAAAAAAAAAAAIBb+/58/+1+ByX/ncdbxEM/vn5ernzPZFcv4qvCS0wVce5LDfDu1IbICxcWgNk5iIymh6ygI7utpazzhDfA26EN2RcpNQAzMYiqBqetoCNT1lLle5Y0wFNuQ8cFKQ/AKAXR2czSFXSkey11P7+tAV5HG7oHbyQCMBVBqAzetK+gI1lDUhv+WmIN8CLboDh4IxuAuRKE8uCN5Ao68uwwJwx/rQEN8M60YcrgzagAzqwh+8yUIMasoGd/AxT+YZ8h34Arg5zQBtkAIm+wchCSKyhrfSiuJakGVAxIrQ0SAXTcTJUg2ldQ91rofn5bA7oP7nW2oTwApcE/6giidAUpD9+rfM+SBkwZvFfVhtQAJg7+UXYQaStoh+F7WecJb8Bug/cy2hAWwM6DfxQZRMgKutPwvdZzd/+FV8M8AAAAAAAAAAAAAAAAAAAAgGZ/byzCogYnF6kAAAAASUVORK5CYII=" alt=""></span>Contrasti e palle recuperate</h2>
     <div id="pitchContrasti"></div>
     <p class="hint">Barra verso sinistra (arancio) = prevale il LEON, verso destra (grigio) = prevale l'avversario. Una coppia di barre per zona.</p>
   </div>
@@ -635,7 +636,7 @@ body.assist #nav button[data-tab="stats"]{display:none}
       <label class="chkrow"><input type="checkbox" data-exp="cardMetriche" checked> Metriche di squadra</label>
       <label class="chkrow"><input type="checkbox" data-exp="cardGiocatori" checked> Giocatori</label>
       <label class="chkrow"><input type="checkbox" data-exp="cardMappa" checked> Mappa dei tiri</label>
-      <label class="chkrow"><input type="checkbox" data-exp="cardContrasti" checked> Duelli e palle recuperate</label>
+      <label class="chkrow"><input type="checkbox" data-exp="cardContrasti" checked> Contrasti e palle recuperate</label>
     </div>
     <button class="btn big" id="btnExportImg" style="width:100%;margin-top:10px">📤 Esporta selezionate come immagine</button>
     <label style="display:block;margin-top:14px;font-size:12.5px;font-weight:700;color:var(--muted)">Nome file PDF</label>
@@ -750,7 +751,7 @@ const XGOT_P=[{k:"ANG_A",lab:"Angolo alto",v:3.5},{k:"CEN_A",lab:"Alto centrale"
  {k:"ANG_B",lab:"Angolo basso",v:3.0},{k:"CEN_B",lab:"Basso centrale (addosso al portiere)",v:0.8}];
 const KEY="leon_tracker_v3";   // archivio SEPARATO dagli altri tracker: i dati non si mescolano
 const VEDE_DEF={duelli:1,possesso:1,falli:1,angoli:0,tiri:0,cambi:0,cartellini:0,voce:1};
-const VEDE_LAB={duelli:"Duelli",possesso:"Palle recuperate e perse",falli:"Falli",angoli:"Angoli",tiri:"Tiri e gol",cambi:"Cambi",cartellini:"Cartellini, rigori, autogol",voce:"Input vocale"};
+const VEDE_LAB={duelli:"Contrasti",possesso:"Palle recuperate e perse",falli:"Falli",angoli:"Angoli",tiri:"Tiri e gol",cambi:"Cambi",cartellini:"Cartellini, rigori, autogol",voce:"Input vocale"};
 
 /* ============ 2. STORAGE ============ */
 const mem={};
@@ -1085,7 +1086,7 @@ function actFallo(dir,zona){
 }
 function actDuelloQuick(esito,zona){
  add({t:esito==="V"?"duelloV":"duelloP",fronte:esito==="V"?"N":"L",zona:zona,g:null});
- toast((esito==="V"?"Duello vinto":"Duello perso")+" (squadra, zona non precisa)");
+ toast((esito==="V"?"Contrasto vinto":"Contrasto perso")+" (squadra, zona non precisa)");
 }
 function actPossQuick(tipo,zona){
  add({t:tipo==="REC"?"recupero":"persa",fronte:tipo==="REC"?"N":"L",zona:zona,g:null});
@@ -1093,12 +1094,12 @@ function actPossQuick(tipo,zona){
 }
 function actDuello(esito,zona){
  const t=esito==="V"?"duelloV":"duelloP";
- withPlayer(esito==="V"?"Chi ha vinto il duello?":"Chi ha perso il duello?",g=>{
+ withPlayer(esito==="V"?"Chi ha vinto il contrasto?":"Chi ha perso il contrasto?",g=>{
   closeSheet();
   try{
    const pid=g==="__SQUADRA__"?null:g;
    add({t:t,fronte:esito==="V"?"N":"L",zona:zona,g:pid});
-   toast((esito==="V"?"Duello vinto":"Duello perso")+(pid?" da "+cognome(pid):" (squadra)"));
+   toast((esito==="V"?"Contrasto vinto":"Contrasto perso")+(pid?" da "+cognome(pid):" (squadra)"));
   }catch(err){toast("ERRORE: "+err.message);}
  },false,true,zona,true);
 }
@@ -1119,7 +1120,7 @@ function actCard(tipo){
   if(tipo==="esp"&&S.min[g]){S.min[g].out=minuto();if(S.sel===g)S.sel=null;save();renderAll();}
   closeSheet();toast((tipo==="amm"?"Ammonito ":"Espulso ")+cognome(g));});
 }
-const ASK={duelloV:"Chi ha vinto il duello?",duelloP:"Chi ha perso il duello?",
+const ASK={duelloV:"Chi ha vinto il contrasto?",duelloP:"Chi ha perso il contrasto?",
  recupero:"Chi ha recuperato?",persa:"Chi ha perso palla?",parata:"Chi ha parato?",clear:"Chi ha salvato?"};
 function actSimple(t,fronte,needsP){
  if(!needsP){add({t:t,fronte:fronte,g:null});return;}
@@ -1197,7 +1198,7 @@ function teamStats(f,ev){
 }
 
 /* ============ 9. RENDER ============ */
-const GIOC_LEGEND="Min=Minuti · Gol=Reti · Ass=Assist · Tiri=Totali(in porta) · xG/xGs (xGOT)=xG prodotto, tra parentesi l'xGOT se la zona di porta è segnata (per il portiere, xG parato) · Falli=Fatti(Subiti) · Due=Vinti(Persi) · Rec=Recuperate(Perse) · Par=Parate · Salv=Salvataggi";
+const GIOC_LEGEND="Min=Minuti · Gol=Reti · Ass=Assist · Tiri=Totali(in porta) · xG/xGs (xGOT)=xG prodotto, tra parentesi l'xGOT se la zona di porta è segnata (per il portiere, xG parato) · Falli=Fatti(Subiti) · Con=Vinti(Persi) · Rec=Recuperate(Perse) · Par=Parate · Salv=Salvataggi";
 let statsPeriod="ALL"; // "ALL" | "1" | "2" — filtro di sola visualizzazione nel Tabellino, non tocca i dati salvati
 const evP=()=>statsPeriod==="ALL"?S.ev:S.ev.filter(x=>x.tempo===+statsPeriod);
 const APP_VERSION="3.0-assistente";
@@ -1341,7 +1342,7 @@ function buildContrastiHTML(ev){
  let h="";
  ["ATT","CEN","DIF"].forEach(z=>{
   const d=zone(z), cap=ZCAP[z];
-  h+=`<div class="zblock"><div class="zlab">${ZLAB[z]}</div>${bar("Duelli",d.duV,d.duP,cap)}${bar("Palle",d.recN,d.perN,cap)}</div>`;
+  h+=`<div class="zblock"><div class="zlab">${ZLAB[z]}</div>${bar("Contrasti",d.duV,d.duP,cap)}${bar("Palle",d.recN,d.perN,cap)}</div>`;
  });
  return h;
 }
@@ -1376,8 +1377,8 @@ function evText(e){
   case "angoloLoro": return {c:"l",t:"Angolo contro",s:""};
   case "parata": return {c:"n",t:"Parata",s:e.g?short(e.g):""};
   case "clear": return {c:"n",t:"Salvataggio",s:e.g?short(e.g):""};
-  case "duelloV": return {c:"n",t:"Duello vinto",s:(e.g?short(e.g):"")+(e.zona?" · "+ZONA_LAB[e.zona]:"")};
-  case "duelloP": return {c:"l",t:"Duello perso",s:(e.g?short(e.g):"")+(e.zona?" · "+ZONA_LAB[e.zona]:"")};
+  case "duelloV": return {c:"n",t:"Contrasto vinto",s:(e.g?short(e.g):"")+(e.zona?" · "+ZONA_LAB[e.zona]:"")};
+  case "duelloP": return {c:"l",t:"Contrasto perso",s:(e.g?short(e.g):"")+(e.zona?" · "+ZONA_LAB[e.zona]:"")};
   case "recupero": return {c:"n",t:"Palla recuperata",s:(e.g?short(e.g):"")+(e.zona?" · "+ZONA_LAB[e.zona]:"")};
   case "persa": return {c:"l",t:"Palla persa",s:(e.g?short(e.g):"")+(e.zona?" · "+ZONA_LAB[e.zona]:"")};
   default: return {c:"n",t:e.t,s:""};
@@ -1506,7 +1507,7 @@ function buildMetricheHTML(ev){
  h+=`<div class="tm-metric"><div class="tm-row"><span class="tm-lab">Sicurezza Palla<span class="tm-q" data-tminfo="sic">?</span></span><span class="tm-val" style="color:${sicurezza<0?"var(--loro)":"var(--noi-d)"}">${sicurezza>=0?"+":""}${sicurezza.toFixed(1)}</span></div>
   <div class="tm-track"><div class="tm-zero" style="left:50%"></div><div class="tm-fill ${dv<0?"neg":""}" style="left:${dv<0?50+dv:50}%;width:${Math.abs(dv)}%"></div></div>
   <p class="tm-note">sotto zero: la squadra ha perso più palloni pesati per zona di quanti ne abbia recuperati</p></div>`;
- h+=`<div class="tm-metric"><div class="tm-row"><span class="tm-lab">Efficacia Duelli<span class="tm-q" data-tminfo="eff">?</span></span><span class="tm-val">${efficacia==null?"–":Math.round(efficacia*100)+"%"}</span></div>
+ h+=`<div class="tm-metric"><div class="tm-row"><span class="tm-lab">Efficacia Contrasti<span class="tm-q" data-tminfo="eff">?</span></span><span class="tm-val">${efficacia==null?"–":Math.round(efficacia*100)+"%"}</span></div>
   <div class="tm-track"><div class="tm-fill" style="width:${efficacia==null?0:efficacia*100}%"></div></div></div>`;
  h+=`<div class="tm-metric"><div class="tm-row"><span class="tm-lab">Disciplina Contrasti<span class="tm-q" data-tminfo="dis">?</span></span><span class="tm-val">${disciplina==null?"–":disciplina.toFixed(2)}</span></div>
   <div class="tm-track"><div class="tm-fill" style="width:${disciplina==null?0:bar(disciplina,1)}%"></div></div></div>`;
@@ -1532,7 +1533,7 @@ function buildSquadraHTML(ev){
   <div><b class="kpi2l"><span class="a">${n.xg.toFixed(2)}</span><span class="l">${l.xg.toFixed(2)} <span class="sub">(${diff>=0?"+":""}${diff.toFixed(2)})</span></span></b><span>xG (differenziale)</span></div>
   <div><b><span class="a">${n.angoli}</span><span class="dash">–</span><span class="l">${l.angoli}</span></b><span>Angoli</span></div>
   <div><b><span class="a">${n.falli}</span><span class="dash">–</span><span class="l">${l.falli}</span></b><span>Falli commessi</span></div>
-  <div><b><span class="a">${duV}</span> <span class="sub l">(${duP} persi)</span></b><span>Duelli</span></div>
+  <div><b><span class="a">${duV}</span> <span class="sub l">(${duP} persi)</span></b><span>Contrasti</span></div>
   <div><b><span class="a">${recN}</span> <span class="sub l">(${perN} perse)</span></b><span>Palle recuperate</span></div>
   <div><b class="small"><span class="a">${n.xgot.toFixed(2)}</span><span class="dash">–</span><span class="l">${l.xgot.toFixed(2)}</span></b><span>xGOT (tiri in porta)<span class="tm-q" data-tminfo="k_xgot">?</span></span></div>
   <div><b class="small">${n.conZona?`<span class="a">${sgn(n.xgot-n.xgBase)}</span>`:"–"} <span class="sub">| POR ${l.conZona?sgn(l.xgot-l.golZona):"–"}</span></b><span>Qualità tiro | gol evitati<span class="tm-q" data-tminfo="k_qual">?</span></span></div>`;
@@ -1547,7 +1548,7 @@ function renderStats(){
  $("#kpi").innerHTML=buildSquadraHTML(ev);
  renderTeamMetrics();
  const conv=convocati();
- const head=["Giocatore","Ruo","Min","Gol","Ass","Tiri","xG/xGs (xGOT)","Falli","Due","Rec","Par","Salv"];
+ const head=["Giocatore","Ruo","Min","Gol","Ass","Tiri","xG/xGs (xGOT)","Falli","Con","Rec","Par","Salv"];
  let h="<thead><tr>"+head.map(x=>"<th>"+x+"</th>").join("")+"</tr></thead><tbody>";
  h+=conv.map(id=>{const s=statsP(id),c=v=>`<td class="${v?"":"z"}">${v||0}</td>`,
    card=s.esp?`<span class="card2 r"></span>`:s.amm?`<span class="card2 y"></span>`:"";
@@ -1590,15 +1591,15 @@ function chooser(title,opts,cb,grid){
 function closeSheet(){$("#ovl").classList.remove("on");$("#sheet").innerHTML="";}
 // NB: se cambi una formula in renderTeamMetrics(), aggiorna anche la spiegazione qui sotto - vanno tenute allineate.
 const TM_INFO={
- off:{t:"Fase Offensiva",f:"Gol ×3 + xG ×2 + Assist ×2 + Duelli vinti in Attacco ×0,3 + Recuperi in Attacco ×0,3",
-  d:"Misura quanto la squadra produce e costruisce in avanti. Gol, xG e assist dominano il punteggio (sono l'esito e la qualità delle occasioni); duelli e recuperi vinti in zona Attacco pesano molto meno, sono un contributo di supporto (pressing, tenere palla alta), non un'azione da gol — servono circa 10 recuperi per pesare come 1 gol."},
- dif:{t:"Fase Difensiva",f:"Duelli vinti in Difesa + Recuperi in Difesa + Salvataggi ×2×(1+xG del tiro) + Parate ×(1+xG del tiro)",
-  d:"Speculare all'Offensiva ma sul lato opposto del campo: duelli/recuperi vinti vicino alla propria porta, più salvataggi e parate — questi ultimi due pesati sulla pericolosità del tiro bloccato/parato (xG), non più a numero fisso: bloccare un tiro quasi-gol vale più che deviare un pallone innocuo. Il salvataggio parte comunque da un peso doppio rispetto alla parata, perché per un difensore è un'azione fuori dal suo ruolo naturale, mentre per il portiere è il suo lavoro."},
+ off:{t:"Fase Offensiva",f:"Gol ×3 + xG ×2 + Assist ×2 + Contrasti vinti in Attacco ×0,3 + Recuperi in Attacco ×0,3",
+  d:"Misura quanto la squadra produce e costruisce in avanti. Gol, xG e assist dominano il punteggio (sono l'esito e la qualità delle occasioni); contrasti e recuperi vinti in zona Attacco pesano molto meno, sono un contributo di supporto (pressing, tenere palla alta), non un'azione da gol — servono circa 10 recuperi per pesare come 1 gol."},
+ dif:{t:"Fase Difensiva",f:"Contrasti vinti in Difesa + Recuperi in Difesa + Salvataggi ×2×(1+xG del tiro) + Parate ×(1+xG del tiro)",
+  d:"Speculare all'Offensiva ma sul lato opposto del campo: contrasti/recuperi vinti vicino alla propria porta, più salvataggi e parate — questi ultimi due pesati sulla pericolosità del tiro bloccato/parato (xG), non più a numero fisso: bloccare un tiro quasi-gol vale più che deviare un pallone innocuo. Il salvataggio parte comunque da un peso doppio rispetto alla parata, perché per un difensore è un'azione fuori dal suo ruolo naturale, mentre per il portiere è il suo lavoro."},
  sic:{t:"Sicurezza Palla",f:"(Recuperi pesati per zona) − (Palle perse pesate per zona), zona: Attacco ×0,7 · Centro ×1 · Difesa ×1,5",
   d:"Perdere palla vicino alla propria porta pesa una volta e mezza più che perderla in attacco; recuperarla lì vale altrettanto di più. È l'unica delle 5 che può diventare negativa, per questo ha la barra a specchio."},
- eff:{t:"Efficacia Duelli",f:"Duelli vinti ÷ (Duelli vinti + Duelli persi)",
-  d:"Una percentuale, non un volume: un difensore che vince 3 duelli su 4 (75%) ha un'efficacia più alta di uno che ne vince 8 su 20 (40%), anche se il secondo ne ha combattuti di più."},
- dis:{t:"Disciplina Contrasti",f:"1 − Falli commessi ÷ (Duelli totali + Recuperi + 1)",
+ eff:{t:"Efficacia Contrasti",f:"Contrasti vinti ÷ (Contrasti vinti + Contrasti persi)",
+  d:"Una percentuale, non un volume: un difensore che vince 3 contrasti su 4 (75%) ha un'efficacia più alta di uno che ne vince 8 su 20 (40%), anche se il secondo ne ha combattuti di più."},
+ dis:{t:"Disciplina Contrasti",f:"1 − Falli commessi ÷ (Contrasti totali + Recuperi + 1)",
   d:"Quanto pulita è la squadra nei contrasti fisici: tanti falli rispetto ai contrasti/recuperi fatti abbassa il numero verso 0; pochi falli lo tiene vicino a 1."},
  k_xgot:{t:"xGOT (tiri in porta)",f:"xGOT = 1 − (1 − xG) elevato al peso della zona di porta · sommato sui tiri in porta con la zona segnata",
   d:"Come l'xG, ma corretto in base a dove nello specchio è andato il tiro (facoltativo da segnare): un tiro all'incrocio vale di più dello stesso tiro calciato addosso al portiere, anche con lo stesso xG di partenza."},
@@ -1641,7 +1642,7 @@ function csvImport(){
   rows.push(x);});
  const macro={gol:"Gol",tiro:"Tiro",fallo:"Fallo",card:"Cartellino",sost:"Sostituzione",
   angoloNoi:"Angolo",angoloLoro:"Angolo",clear:"Salvataggio",parata:"Parata",
-  duelloV:"Duello",duelloP:"Duello",recupero:"Recupero",persa:"Palla persa"};
+  duelloV:"Contrasto",duelloP:"Contrasto",recupero:"Recupero",persa:"Palla persa"};
  S.ev.forEach(e=>{
   let det="";
   if(e.t==="gol") det=(e.tipoGol||"Azione")+" / "+(SET_LAB[e.set]||"");
@@ -1698,7 +1699,7 @@ function report(){
   L.push(`Portiere ${nome(id)}: xGOT affrontati ${q.xgotAff.toFixed(2)}, gol subiti ${q.golZona}, gol evitati ${sgn(q.xgotAff-q.golZona)}`);});
  const duV=S.ev.filter(e=>e.t==="duelloV").length, duP=S.ev.filter(e=>e.t==="duelloP").length;
  const recN=S.ev.filter(e=>e.t==="recupero").length, perN=S.ev.filter(e=>e.t==="persa").length;
- L.push(`Duelli ${duV} (${duP} persi) · Palle recuperate ${recN} (${perN} perse)`);
+ L.push(`Contrasti ${duV} (${duP} persi) · Palle recuperate ${recN} (${perN} perse)`);
  const g=S.ev.filter(e=>e.t==="gol"&&e.fronte==="N");
  if(g.length){L.push("");L.push("MARCATORI");
   g.forEach(e=>L.push(`  ${e.min}' ${e.g?nome(e.g):"autogol avversario"}${e.assist?" (assist "+nome(e.assist)+")":""}${e.set==="RIG"?" su rigore":""}`));}
@@ -1724,7 +1725,7 @@ function reportPlayer(id){
  L.push(`Tiri ${s.tiri} (${s.tiriIn} in porta) · xG ${s.xg.toFixed(2)}`+(s.xgot?` · xGOT ${s.xgot.toFixed(2)} (qualità tiro ${sgn(s.xgot-s.xgBase)})`:""));
  if(s.xgotAff>0) L.push(`Da portiere: xGOT affrontati ${s.xgotAff.toFixed(2)} · gol subiti ${s.golZona} · gol evitati ${sgn(s.xgotAff-s.golZona)}`);
  L.push(`Falli fatti ${s.falliF} · Falli subiti ${s.falliS}`);
- L.push(`Duelli ${s.duelli} (${s.duelliP} persi) · Palle recuperate ${s.recuperi} (${s.persi} perse)`);
+ L.push(`Contrasti ${s.duelli} (${s.duelliP} persi) · Palle recuperate ${s.recuperi} (${s.persi} perse)`);
  L.push(`Voto: ${voto}`);
  return L.join("\n");
 }
@@ -1881,22 +1882,28 @@ function correggiGiocatore(i){
   toast(`Corretto: ${short(oldId)} → ${short(newId)} (${n} eventi spostati)`);
  }, true);
 }
+$("#p-setup").addEventListener("change",e=>{
+ const t=e.target;
+ if(t.dataset&&t.dataset.num!==undefined){
+  const val=t.value.replace(/\D/g,"");
+  if(!val)return;
+  S.rosa.forEach(p=>{
+   if(p.id!==t.dataset.num&&p.num===val){
+    p.num="";
+    const other=$('[data-num="'+p.id+'"]'); if(other) other.value="";
+    toast("Numero "+val+" tolto a "+short(p.id));
+   }
+  });
+  save();
+ }
+});
 $("#p-setup").addEventListener("input",e=>{
  const t=e.target;
  if(t.id==="selMatch"){S.mid=t.value;save();renderAll();}
  else if(t.id==="selModulo"){S.modulo=t.value;S.lineup={};save();renderAll();toast("Modulo cambiato, formazione azzerata");}
  else if(t.dataset.num!==undefined){
   const val=t.value.replace(/\D/g,"");
-  P(t.dataset.num).num=val;
-  if(val){
-   S.rosa.forEach(p=>{
-    if(p.id!==t.dataset.num&&p.num===val){
-     p.num="";
-     const other=$('[data-num="'+p.id+'"]'); if(other) other.value="";
-     toast("Numero "+val+" tolto a "+short(p.id));
-    }
-   });
-  }
+  P(t.dataset.num).num=val;   // mentre scrivi salvo soltanto: il controllo dei doppioni avviene a campo concluso
   save();
  }
  else if(t.dataset.piede!==undefined){P(t.dataset.piede).piede=t.value;save();}
@@ -1964,7 +1971,7 @@ function applyVede(){
  const vis=(el,k)=>{if(el)el.style.display=(ass&&!v[k])?"none":"";};
  vis($("#secTiri"),"tiri"); vis($("#voceBox"),"voce"); vis($("#dRari"),"cartellini");
  $$("#p-live .rowlab").forEach(l=>{
-  const t=l.textContent, k=/Fall/.test(t)?"falli":/Duell/.test(t)?"duelli":"possesso";
+  const t=l.textContent, k=/Fall/.test(t)?"falli":/Duell|Contrast/.test(t)?"duelli":"possesso";
   vis(l,k); vis(l.nextElementSibling,k);
  });
  let nAltro=0;
@@ -2113,7 +2120,9 @@ const VOCE_PARSER=(function(){
      .replace(/\bdue\s+l{1,2}[oi]\b/g,"duello")
      .replace(/\bdue\s+(?=(?:vint|vinc|pers|perd)\w*)/g,"duello ")
      .replace(/\bduell[ioae]\b/g,"duello")
-     .replace(/\bdual[oi]?\b/g,"duello");
+     .replace(/\bdual[oi]?\b/g,"duello")
+     .replace(/\bdue\s+e\s+lo\b/g,"duello")
+     .replace(/\b(?:contrast[oi]|scontr[oi]|uno contro uno|1 contro 1)\b/g,"duello");
   const tk=s.split(/\s+/).filter(Boolean), out=[];
   for(let i=0;i<tk.length;i++){
    const w=tk[i];
@@ -2183,7 +2192,7 @@ const VOCE_PARSER=(function(){
    const lato=has(t,/\b(loro|contro|avversari\w*)\b/)?"L":(has(t,/\b(nostro|nostri|nostra|favore|noi)\b/)?"N":null);
    return R({kind:lato==="L"?"angoloLoro":lato==="N"?"angoloNoi":"angolo",need:lato?[]:["lato"]});
   }
-  if(has(t,/\bduell\w*/)){
+  if(has(t,/\bduell\w*/)||(has(t,/\b(vint[oiae]|vinc\w*|vinse)\b/)&&!has(t,/\b(pall[ae]|recuper\w*)\b/))){
    const v=t.search(/\b(vint\w*|vinc\w*|vinse)\b/), p=t.search(/\b(pers[oaie]|perd\w*)\b/);
    const esito=(v>=0&&(p<0||v<p))?"V":(p>=0?"P":null);
    const zona=zonaOf(t);
@@ -2273,7 +2282,7 @@ function vplayer(n){
  if(!isAss()&&!inCampo().includes(id))return {err:"Il "+n+" ("+short(id)+") non è in campo"};
  return {id:id};
 }
-const VASK={persa:"Chi ha perso palla?",recupero:"Chi ha recuperato?",duelloV:"Chi ha vinto il duello?",duelloP:"Chi ha perso il duello?",
+const VASK={persa:"Chi ha perso palla?",recupero:"Chi ha recuperato?",duelloV:"Chi ha vinto il contrasto?",duelloP:"Chi ha perso il contrasto?",
  fallo:"Chi è il giocatore del fallo?",card:"A chi il cartellino?",autogolN:"Chi ha fatto autogol?"};
 function voceRun(r,raw,done){
  if(isAss()&&VKEY[r.kind]&&!S.ass.vede[VKEY[r.kind]]){voceMsg(`<div class="vraw">🎤 «${esc(raw)}»</div>Questo evento non è abilitato per te.`,"err");voceQueue=[];return;}
@@ -2312,7 +2321,7 @@ function voceRun(r,raw,done){
  };
  const stepEsito=next=>{
   if(spec.kind!=="duello")return next();
-  chooser("Duello",[{v:"duelloV",l:"Vinto"},{v:"duelloP",l:"Perso"}],k=>{spec.kind=k;next();});
+  chooser("Contrasto",[{v:"duelloV",l:"Vinto"},{v:"duelloP",l:"Perso"}],k=>{spec.kind=k;next();});
  };
  const stepDir=next=>{
   if(spec.kind!=="fallo"||spec.dir)return next();
@@ -2677,7 +2686,7 @@ function buildPdfMetrichePage(){
  h+=pdfCmpBarEqual("Fase Offensiva",m1.offensiva,m2.offensiva,mA.offensiva,22,v=>v.toFixed(1));
  h+=pdfCmpBarEqual("Fase Difensiva",m1.difensiva,m2.difensiva,mA.difensiva,35,v=>v.toFixed(1));
  h+=pdfCmpBarDivEqual("Sicurezza Palla",m1.sicurezza,m2.sicurezza,mA.sicurezza,18,v=>(v>=0?"+":"")+v.toFixed(1));
- h+=pdfCmpBarEqual("Efficacia Duelli",m1.efficacia,m2.efficacia,mA.efficacia,1,v=>v==null?"–":Math.round(v*100)+"%");
+ h+=pdfCmpBarEqual("Efficacia Contrasti",m1.efficacia,m2.efficacia,mA.efficacia,1,v=>v==null?"–":Math.round(v*100)+"%");
  h+=pdfCmpBarEqual("Disciplina Contrasti",m1.disciplina,m2.disciplina,mA.disciplina,1,v=>v==null?"–":v.toFixed(2));
  const explain=`<div class="pdf-explain">`+["off","dif","sic","eff","dis"].map(k=>{const x=TM_INFO[k];
   return `<div class="pdf-explain-item"><b>${esc(x.t)}</b> — <span class="pdf-explain-f">${esc(x.f)}</span><br>${esc(x.d)}</div>`;}).join("")+`</div>`;
@@ -2691,12 +2700,12 @@ function buildPdfContrastiPage(){
  ["ATT","CEN","DIF"].forEach(z=>{
   const cap=ZCAP[z];
   h+=`<h3 class="pdf-h3" style="margin-top:20px">${ZLAB[z]}</h3>`;
-  h+=pdfCmpBarDivEqual("Duelli (vinti–persi)",z1[z].duV-z1[z].duP,z2[z].duV-z2[z].duP,zA[z].duV-zA[z].duP,cap,v=>(v>=0?"+":"")+v);
+  h+=pdfCmpBarDivEqual("Contrasti (vinti–persi)",z1[z].duV-z1[z].duP,z2[z].duV-z2[z].duP,zA[z].duV-zA[z].duP,cap,v=>(v>=0?"+":"")+v);
   h+=pdfCmpBarDivEqual("Palle (recuperate–perse)",z1[z].recN-z1[z].perN,z2[z].recN-z2[z].perN,zA[z].recN-zA[z].perN,cap,v=>(v>=0?"+":"")+v);
  });
  const explain=`<div class="pdf-explain"><div class="pdf-explain-item"><b>Come leggere i numeri</b> — <span class="pdf-explain-f">valore = vinti/recuperate meno persi, per zona</span><br>
   Un valore positivo significa che la squadra ha vinto/recuperato più di quanto abbia perso in quella zona; negativo il contrario. Le tre barre hanno la stessa scala per confrontarle più facilmente; quella della partita intera è più alta e di un colore più scuro.</div></div>`;
- return `<div class="pdf-page"><h2 class="pdf-h2">Duelli e palle recuperate</h2>${h}${explain}</div>`;
+ return `<div class="pdf-page"><h2 class="pdf-h2">Contrasti e palle recuperate</h2>${h}${explain}</div>`;
 }
 function buildPdfPages(){
  const pages=[buildPdfPage1()];
