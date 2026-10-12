@@ -708,9 +708,9 @@ const ROSA = [
  ["G03","Casiraghi Andrea","DIF",""],["G04","Crippa Filippo","DIF",""],
  ["G05","Donadello Alessandro","ATT",""],["G06","Giugliano Alessandro","ATT",""],
  ["G07","Klodnytskyy David","CEN",""],["G08","Magugliani Gabriele","DIF",""],
- ["G09","Ornaghi Leonardo","DIF",""],["G10","Pioltelli Francesco","POR",""],
+ ["G09","Ornaghi Leonardo","CEN",""],["G10","Pioltelli Francesco","POR",""],
  ["G11","Pittelli Cristian","POR",""],["G12","Poccia Christian","ATT",""],
- ["G13","Rigamonti Matteo","DIF",""],["G14","Rinaldi Gabriele","CEN",""],
+ ["G13","Rigamonti Matteo","CEN",""],["G14","Rinaldi Gabriele","CEN",""],
  ["G15","Rinaldo Pietro","CEN",""],["G16","Silvestri Samuele","DIF",""],
  ["G17","Terracciano Luis","ATT",""],["G18","Trevisan Diego","CEN",""],
  ["G19","Villa Leonardo","CEN",""],["G20","Villa Nicolò","CEN",""],
@@ -805,7 +805,7 @@ function load(){
   o.ass=Object.assign({nome:"",prof:{}},o.ass||{}); o.ass.vede=Object.assign({},VEDE_DEF,o.ass.vede||{});
   o.lineup=o.lineup||{}; o.bench=o.bench||[]; o.ev=o.ev||[]; o.min=o.min||{}; o.voti=o.voti||{};
   const by=Object.fromEntries((o.rosa||[]).map(r=>[r.id,r]));
-  o.rosa=f.rosa.map(p=>by[p.id]?{id:p.id,nome:p.nome,r1:p.r1,num:by[p.id].num??p.num,piede:by[p.id].piede||"DX"}:p);
+  o.rosa=f.rosa.map(p=>by[p.id]?{id:p.id,nome:p.nome,r1:(by[p.id].r1x?by[p.id].r1:p.r1),r1x:!!by[p.id].r1x,num:by[p.id].num??p.num,piede:by[p.id].piede||"DX"}:p);
   return o;
  }catch(e){return freshState();}
 }
@@ -1260,9 +1260,10 @@ function renderSetup(){
   rb.dataset.ord=ordRosa;
   rb.innerHTML=rosaOrdinata().map(p=>`<div class="rrow"><span class="id">${p.id}</span>
    <input class="n num" type="text" inputmode="numeric" maxlength="2" value="${esc(p.num)}" data-num="${p.id}" placeholder="–">
-   <span class="nm">${esc(p.nome)}<span class="ru ${p.r1}">${p.r1}</span></span>
+   <span class="nm">${esc(p.nome)}</span>
+   <select data-ruolo="${p.id}" title="Ruolo in rosa (colori, ordine, portiere)"><option>POR</option><option>DIF</option><option>CEN</option><option>ATT</option></select>
    <select data-piede="${p.id}"><option value="DX">DX</option><option value="SX">SX</option></select></div>`).join("");
-  S.rosa.forEach(p=>{rb.querySelector('[data-piede="'+p.id+'"]').value=p.piede;});
+  S.rosa.forEach(p=>{rb.querySelector('[data-piede="'+p.id+'"]').value=p.piede;rb.querySelector('[data-ruolo="'+p.id+'"]').value=p.r1;});
  }
  const cb=$("#calBox");
  if(cb.children.length!==30){
@@ -1907,6 +1908,7 @@ $("#p-setup").addEventListener("input",e=>{
   save();
  }
  else if(t.dataset.piede!==undefined){P(t.dataset.piede).piede=t.value;save();}
+ else if(t.dataset.ruolo!==undefined){const p=P(t.dataset.ruolo);p.r1=t.value;p.r1x=true;save();$("#rost").dataset.ord="";renderAll();toast(short(p.id)+": ruolo "+p.r1);}
  else if(t.dataset.cav!==undefined){S.cal[+t.dataset.cav].avv=t.value;save();renderHeader();}
  else if(t.dataset.cdt!==undefined){S.cal[+t.dataset.cdt].data=t.value;save();}
  else if(t.dataset.xg!==undefined){S.xg[t.dataset.xg]=Math.max(0,Math.min(1,+t.value||0));save();}
